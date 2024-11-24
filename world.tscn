@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bg6slu4gs17i8"]
+
+[ext_resource type="MeshLibrary" uid="uid://di7wdiuxojcm6" path="res://tiles.tres" id="1_p4okg"]
+[ext_resource type="Script" path="res://generate2d.gd" id="2_eyhqd"]
+[ext_resource type="Script" path="res://cameraMovement.gd" id="3_mp77b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2jeq"]
+sky_top_color = Color(0.386827, 0.453653, 1, 1)
+sky_horizon_color = Color(0.716975, 0.718584, 0.83769, 1)
+ground_bottom_color = Color(0.481074, 0.420681, 0.350758, 1)
+ground_horizon_color = Color(0.716975, 0.718584, 0.83769, 1)
+
+[sub_resource type="Sky" id="Sky_g2lqh"]
+sky_material = SubResource("ProceduralSkyMaterial_h2jeq")
+
+[sub_resource type="Environment" id="Environment_fuu0e"]
+background_mode = 2
+sky = SubResource("Sky_g2lqh")
+tonemap_mode = 3
+ssao_radius = 5.0
+ssao_intensity = 3.0
+ssao_detail = 0.2
+glow_enabled = true
+fog_light_color = Color(0.612665, 0.640268, 0.760524, 1)
+fog_density = 0.003
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_57ugt"]
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fuu0e")
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_p4okg")
+cell_size = Vector3(1, 1, 1)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+script = ExtResource("2_eyhqd")
+worldSize = 4
+chunkSize = 128
+invert = true
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.792481, -0.0976477, 0.602029, -3.35276e-08, 0.9871, 0.160105, -0.609896, -0.126881, 0.782258, 9.53674e-07, 9.90945, 4.99342)
+shadow_enabled = true
+directional_shadow_mode = 1
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 300.0
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.725, 127.335, 226.691)
+script = ExtResource("3_mp77b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_57ugt")
+
+[node name="Neck" type="Node3D" parent="CharacterBody3D"]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck"]

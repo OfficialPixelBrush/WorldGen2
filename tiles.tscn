@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://blnosss3vsdgi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y67yr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ntt6h"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8af0e"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wypjx"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4wfl7"]
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bxx7g"]
+size = Vector3(6, 6, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rh84w"]
+size = Vector3(7, 7, 7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1cha0"]
+size = Vector3(8, 8, 8)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="voxel" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_y67yr")
+
+[node name="voxel2" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ntt6h")
+
+[node name="voxel3" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8af0e")
+
+[node name="voxel4" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wypjx")
+
+[node name="voxel5" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4wfl7")
+
+[node name="voxel6" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bxx7g")
+
+[node name="voxel7" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rh84w")
+
+[node name="voxel8" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_1cha0")
